@@ -2,7 +2,6 @@
 
 This project complete the series of [NavBar Component](https://github.com/cecortes/NavBar_Component) and [NavBar_CSS_HTML_JS_Only](https://github.com/cecortes/NavBar_CssHtmlJsOnly)
 
----
 
 ## Description
 
