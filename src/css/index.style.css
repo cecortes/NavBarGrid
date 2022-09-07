@@ -1,0 +1,142 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,400;1,700&display=swap");
+
+/* Variables */
+:root {
+  --color-pri: #fff;
+  --color-sec: #000;
+  --color-bg: rgb(93, 89, 89);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-pri);
+}
+
+/* Mobile first */
+/* Header */
+.hero__container {
+  background-image: linear-gradient(rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.2)),
+    url("../assets/hero.jpg");
+  background-size: cover;
+  min-height: 500px;
+  height: 100vh;
+  color: aliceblue;
+}
+
+.nav__container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.nav {
+  padding: 40px 0;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: repeat(2, max-content);
+  /* Custom properties */
+  --state-close: scale(0);
+  --state-open: scale(1);
+  --state-menu: translate(-100%);
+}
+
+/* Show and hide the menu */
+.nav:target {
+  --state-close: scale(1);
+  --state-open: scale(0);
+  --state-menu: translate(0);
+}
+
+.nav__logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-pri);
+  z-index: 1;
+}
+
+.nav__hamburger,
+.nav__close {
+  cursor: pointer;
+  grid-column: -2/-1;
+  grid-row: 1/2;
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav__hamburger {
+  transform: var(--state-open);
+}
+
+.nav__close {
+  transform: var(--state-close);
+}
+
+.nav__icon {
+  width: 40px;
+}
+
+.nav__links {
+  background-color: rgb(233, 158, 19);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  display: grid;
+  align-content: center;
+  gap: 2em;
+  padding-left: 5%;
+  transform: var(--state-menu);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav__item {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+.nav__link {
+  color: aliceblue;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+/* Larger Screens */
+@media screen and (min-width: 768px) {
+  .nav {
+    /* Custom properties */
+    --state-open: scale(0);
+    --state-menu: translate(0);
+  }
+
+  /* Always show the menu */
+  .nav:target {
+    --state-close: scale(0);
+  }
+
+  .nav__links {
+    background-color: unset;
+    position: unset;
+    padding: 0;
+    gap: 1.5em;
+    transform: unset;
+    grid-auto-flow: column;
+    grid-column: -2/-1;
+    grid-row: 1/2;
+  }
+
+  .nav__link {
+    font-size: 1.2rem;
+    letter-spacing: normal;
+  }
+}
